@@ -1,0 +1,6 @@
+name: cling-ifes
+channels:
+  - conda-forge
+dependencies:
+  - octave_kernel
+  - notebook
