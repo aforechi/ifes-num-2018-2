@@ -1,4 +1,4 @@
-function yint = newtint(x, y, xx)
+function [yint, b] = newtint(x, y, xx)
 n = length(x);
 b = zeros(n,n);
 
@@ -6,7 +6,7 @@ b = zeros(n,n);
 b(:,1) = y(:); % o (:) garante que o y é um vetor coluna.
 
 for j = 2:n
-    for i = i:n-j+1
+    for i = 1:n-j+1
         b(i,j) = ( b(i+1,j-1) - b(i,j-1) ) / ( x(i+j-1) - x(i) );
     end
 end
