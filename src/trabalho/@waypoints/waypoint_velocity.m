@@ -6,7 +6,7 @@ function self = waypoint_velocity(obj, x)
     
     pts = waypoints_wrt_car(obj, x);
     
-    [min_dist, min_idx] = min(vecnorm(pts,2,2));
+    [min_dist, min_idx] = min(sqrt(sum(pts.^2, 2)));
 
     self.velocity = obj.waypoints(min_idx,3);
     

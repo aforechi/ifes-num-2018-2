@@ -1,15 +1,16 @@
 clear;
-err = 0;
 baseline = 4.5; % Wheels baseline (default 4.5m)
 steermax = 1.22; % Maximum steering (default 0.5 radians);
 accelmax = 9.5; % Tesla Model S (96Km/h em 2.8s)
 dt = 1/20;
-t = 0:dt:10;
 
-trajectories;
+x = [0 0 0 0]; 
+viapoints = [20 20; -20 40; 0 60; 20 40; -20 20; -0.5 0];
+viapoints = mstraj(viapoints, [10,10], [], [0 0], 0.1, 1);
+viapoints = [viapoints 10*ones(length(viapoints),1)];
+plot(viapoints(:,1), viapoints(:,2));
 
-checkpoints = eight_shaped_curve;
-viapoints = get(checkpoints, 'waypoints');
+checkpoints = waypoints(viapoints);
 
 car = bicycle(baseline, accelmax, steermax);
 
@@ -27,6 +28,7 @@ while true
     trajectory = [trajectory; current_state];
     
     checkpoints = waypoint_velocity(checkpoints, current_state);
+    
     lateral_control = set(lateral_control, 'waypoints', checkpoints);
     
     if finished(checkpoints)
@@ -34,8 +36,6 @@ while true
     end
     current_velocity = current_state(4);    
     desired_velocity = get(checkpoints, 'velocity');
-
-    err = err + abs(desired_velocity - current_velocity);
 
     lateral_control = update(lateral_control, current_state);
     steering = get(lateral_control, 'steering');
