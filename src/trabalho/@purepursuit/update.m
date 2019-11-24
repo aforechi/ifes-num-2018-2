@@ -11,9 +11,9 @@ function self = update(obj, x)
 
         waypoints = waypoints_wrt_car(obj.waypoints, x);
 
-        coeffs = polyfit(waypoints(i:i+4,1), waypoints(i:i+4,2), 1);
+        coeffs = polyfit(waypoints(i:i+1,1), waypoints(i:i+1,2), 1);
         
-        lookahead_distance_x = self.lookahead_distance + self.gain * velocity;          
+        lookahead_distance_x = self.lookahead_distance;
         
         cte = polyval(coeffs, lookahead_distance_x);
         

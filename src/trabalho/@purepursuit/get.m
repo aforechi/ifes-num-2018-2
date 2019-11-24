@@ -17,8 +17,6 @@ function val = get (obj, prop)
       val = obj.baseline;
     case "steermax"
       val = obj.steermax;
-    case "gain"
-      val = obj.gain;
     case "lookahead_distance"
       val = obj.lookahead_distance;
     case "waypoints"

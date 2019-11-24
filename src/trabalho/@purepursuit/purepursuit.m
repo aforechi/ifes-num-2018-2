@@ -1,7 +1,6 @@
-function obj = purepursuit(baseline, steermax, gain, lookahead_distance)
+function obj = purepursuit(baseline, steermax, lookahead_distance)
     data.baseline = baseline;
     data.steermax = steermax;
-    data.gain = gain;
     data.lookahead_distance = lookahead_distance;
     data.steering = 0;
     data.velocity = 0;

@@ -21,8 +21,6 @@ function obj = set (p, varargin)
           obj.baseline = val;
         case "steermax"
           obj.steermax = val;
-        case "gain"
-          obj.gain = val;
         case "lookahead_distance"
           obj.lookahead_distance = val;
         case "waypoints"
