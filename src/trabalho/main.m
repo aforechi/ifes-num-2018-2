@@ -1,10 +1,10 @@
-function trajectory = main(x, dt, baseline, accelmax, steermax, viapoints)
+function trajectory = main(x, dt, baseline, accelmax, steermax, lookahead, viapoints)
 
     checkpoints = waypoints(viapoints);
 
     car = bicycle(baseline, accelmax, steermax);
 
-    lateral_control = purepursuit(baseline, steermax, 1.0);
+    lateral_control = purepursuit(baseline, steermax, lookahead);
 
     velocity_control = pidcontrol(1, 1, 0.01, dt);
 
