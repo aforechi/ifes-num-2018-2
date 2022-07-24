@@ -1,3 +1,3 @@
-function v = verLessThan()
-    v = true;
+function result = verLessThan(toolboxstr, verstr)
+    result = true;
 end
