@@ -5,11 +5,14 @@ function self = waypoint_velocity(obj, x)
     self = obj;
     
     pts = waypoints_wrt_car(obj, x);
-    
-    [min_dist, min_idx] = min(sqrt(sum(pts.^2, 2)));
+    dist = sqrt(sum(pts.^2, 2));
 
-    self.velocity = obj.waypoints(min_idx,3);
+    min_idx = min(dist);
     
-    self.current = min_idx;
+    min_fst = find(dist==min_idx,1,'first');
+
+    self.velocity = obj.waypoints(min_fst,3);
+    
+    self.current = min_fst;
 
 end
